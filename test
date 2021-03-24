@@ -1,0 +1,17 @@
+        rect = matplotlib.patches.Rectangle((x2,y2),w2,h2, edgecolor=a_color, facecolor="none")
+        
+        ax.add_patch(rect)
+        ax.annotate(a_class, xy=(x2-3,y2-3), xycoords="data",
+                  va="center", ha="center",
+                  bbox=dict(boxstyle="round", fc="w"))
+    ax.imshow(img)
+def fig2img(fig):
+    """Convert a Matplotlib figure to a PIL Image and return it"""
+    import io
+    buf = io.BytesIO()
+    fig.savefig(buf)
+    buf.seek(0)
+    img = Image.open(buf)
+    return img
+im = fig2img ( figure )
+im.show()
